@@ -1,0 +1,8 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#F5F5F5"/>
+  <path d="M 80 60 L 120 60 L 120 140 L 80 140 Z" fill="#0B4F6C" opacity="0.8"/>
+  <path d="M 90 50 L 130 50 L 130 130 L 90 130 Z" fill="#20BEFF" opacity="0.6"/>
+  <path d="M 70 70 L 110 70 L 110 150 L 70 150 Z" fill="#01497C" opacity="0.9"/>
+  <text x="100" y="120" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#01497C" text-anchor="middle">HR</text>
+  <text x="100" y="165" font-family="Arial, sans-serif" font-size="12" fill="#0B4F6C" text-anchor="middle" letter-spacing="2">SERVIÇOS PREDIAIS</text>
+</svg>

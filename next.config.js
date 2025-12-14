@@ -1,6 +1,15 @@
+const repo = "hrservicosprediais";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
+
+  basePath: `/${repo}`,
+  assetPrefix: `/${repo}/`,
+  trailingSlash: true,
+
   allowedDevOrigins: ["*.preview.same-app.com"],
+
   images: {
     unoptimized: true,
     domains: [

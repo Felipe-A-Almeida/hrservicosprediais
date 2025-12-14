@@ -1,16 +1,12 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+
+export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://hrservicosprediais.com.br'
-
   return [
     {
-      url: baseUrl,
+      url: "https://felipealmeida.github.io/hrservicosprediais",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
     },
-  ]
+  ];
 }
-
-

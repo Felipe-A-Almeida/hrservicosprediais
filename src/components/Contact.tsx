@@ -6,8 +6,10 @@ import { MessageCircle } from "lucide-react";
 
 export default function Contact() {
   const whatsappNumber = "5511988977319";
+  const whatsappNumber2 = "5511915108421";
   const whatsappMessage = "Olá! Gostaria de solicitar um orçamento.";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappLink2 = `https://wa.me/${whatsappNumber2}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <section id="contato" className="py-20 bg-muted/30">
@@ -50,7 +52,7 @@ export default function Contact() {
               <Button
                 size="lg"
                 className="w-full gradient-primary text-white"
-                onClick={() => window.open(whatsappLink, '_blank')}
+                onClick={() => window.open(whatsappLink2, '_blank')}
               >
                 <MessageCircle className="mr-2" />
                 Chamar no WhatsApp

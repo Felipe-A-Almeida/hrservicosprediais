@@ -76,9 +76,9 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <Phone size={18} className="mt-1 flex-shrink-0" />
                 <div>
-                  <div>Regis</div>
+                  <div>Reginaldo Farias</div>
                   <a
-                    href="https://wa.me/5511994774919"
+                    href="https://wa.me/5511915108421"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors"

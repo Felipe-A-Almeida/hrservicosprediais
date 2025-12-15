@@ -1,9 +1,62 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Phone } from "lucide-react";
+import { Phone, ChevronDown, Mail, MessageCircle } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Hero() {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const whatsappMessage = "Olá! Gostaria de solicitar um orçamento.";
+
+  const contactOptions = [
+    {
+      name: "Henrique Gomes",
+      type: "whatsapp",
+      number: "5511988977319",
+      display: "+55 11 98897-7319",
+    },
+    {
+      name: "Reginaldo Farias",
+      type: "whatsapp",
+      number: "5511915108421",
+      display: "+55 11 91510-8421",
+    },
+    {
+      name: "E-mail",
+      type: "email",
+      email: "hrservicosprediais@hotmail.com",
+      display: "hrservicosprediais@hotmail.com",
+    },
+  ];
+
+  const handleContact = (option: typeof contactOptions[0]) => {
+    if (option.type === "whatsapp") {
+      const link = `https://wa.me/${option.number}?text=${encodeURIComponent(whatsappMessage)}`;
+      window.open(link, "_blank");
+    } else if (option.type === "email") {
+      window.location.href = `mailto:${option.email}`;
+    }
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <section
       id="inicio"
@@ -24,14 +77,47 @@ export default function Hero() {
           </p>
 
           <div className="flex justify-center items-center">
-            <Button
-              size="lg"
-              className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto"
-              onClick={() => window.open('https://wa.me/5511988977319?text=Olá! Gostaria de solicitar um orçamento.', '_blank')}
-            >
-              <Phone className="mr-2" />
-              Entrar em Contato
-            </Button>
+            <div className="relative" ref={dropdownRef}>
+              <Button
+                size="lg"
+                className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <Phone className="mr-2" />
+                Entrar em Contato
+                <ChevronDown
+                  className={`ml-2 h-4 w-4 transition-transform ${
+                    isOpen ? "transform rotate-180" : ""
+                  }`}
+                />
+              </Button>
+
+              {isOpen && (
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-64 bg-white rounded-lg shadow-xl z-50 border border-gray-200 bottom-full mb-2 desktop:bottom-auto desktop:mb-0 desktop:top-full desktop:mt-2">
+                  <div className="py-2">
+                    {contactOptions.map((option, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleContact(option)}
+                        className="w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors flex items-center gap-3 text-gray-800"
+                      >
+                        {option.type === "whatsapp" ? (
+                          <MessageCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                        ) : (
+                          <Mail className="h-5 w-5 text-primary flex-shrink-0" />
+                        )}
+                        <div className="flex flex-col">
+                          <span className="font-semibold">{option.name}</span>
+                          <span className="text-sm text-gray-600">
+                            {option.display}
+                          </span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

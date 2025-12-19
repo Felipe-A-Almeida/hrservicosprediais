@@ -2,15 +2,12 @@
   "name": "nextjs-shadcn",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://felipe-a-almeida.github.io/hrservicosprediais/",
   "scripts": {
     "dev": "next dev -H 0.0.0.0 --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "bunx tsc --noEmit && next lint",
-    "format": "bunx biome format --write",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d out --nojekyll -r https://github.com/Felipe-A-Almeida/hrservicosprediais.git"
+    "format": "bunx biome format --write"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

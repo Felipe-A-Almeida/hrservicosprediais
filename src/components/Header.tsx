@@ -22,7 +22,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center gap-3">
             <Image
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH}/logo.png`}
+              src="/logo.png"
               alt="HR Serviços Prediais"
               width={60}
               height={60}
